@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>404页面</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.box>img{float:left;margin:100px;}
+		.box>h1{margin-top:200px;float:left;}
+	</style>
+</head>
+<body>
+	<div class="box">
+	<img src="/11.gif"/><h1>404页面,居然没有找到……&nbsp;</h1><h1><span class="dao"></span>&nbsp;秒后跳转</h1>
+	</div>
+	<script type="text/javascript">
+		var tims=5;
+		var daoDom=document.querySelector('.dao');
+		daoDom.innerHTML=tims;
+		var times=setInterval(function(){
+			daoDom.innerHTML=tims;
+			tims--;
+			console.log(tims);
+			if(tims<0){
+				location.href="/";
+			}
+		},1000)
+	</script>
+</body>
+</html>

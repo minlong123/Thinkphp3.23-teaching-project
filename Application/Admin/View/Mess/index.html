@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>网站后台</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css">
+
+<!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<include file="Public/header" />
+<section class="container-fluid">
+	<div class="row">
+		<include file="Public/left" />
+
+		<div class="col-lg-9">
+
+		 <div class="bs-example" data-example-id="table-within-panel">
+		    <div class="panel panel-default">
+		      <!-- Default panel contents -->
+		      <div class="panel-heading">用户留言管理</div>
+		      <div class="panel-body">
+		      	<if condition="session('jur') eq '0' or strstr(session('jur'),'Mess-deleteAllMsg')">
+		        <a href="#" class="btn btn-danger deleteAll" data-toggle="modal">删除所有留言</a>
+		        </if>
+		      </div>
+
+		      <!-- Table -->
+		      <div class="table-responsive">
+			      <table class="table table-bordered">
+			        <thead>
+			          <tr>
+			            <th>id</th>
+			            <th>留言姓名</th>
+			            <th>留言电话</th>
+			            <th>留言内容</th>
+			            <th>留言时间</th>
+			            <th>留言IP</th>
+			            <th>操作</th>
+			          </tr>
+			        </thead>
+			        <tbody>
+			         <volist name="meslist" id="vo">
+			          <tr>
+			            <th>{$vo.id}</th>
+			            <td>{$vo.name}</td>
+			            <td>{$vo.tel}</td>
+			            <td>{$vo.con}</td>
+			            <td>{$vo.times|date="Y-m-d h:i:s",###}</td>
+			            <td>{$vo.address}</td>
+
+			            <td>
+			            	<if condition="session('jur') eq '0' or strstr(session('jur'),'Mess-deleteMsg')">
+			            	<a href="#" type="button" class="btn btn-danger" data-toggle="modal" onclick="delemes({$vo.id});">删除</a>
+			            	</if>
+			            </td>
+			          </tr>
+			      	</volist>
+
+			        </tbody>
+			      </table>
+		  	  </div>
+		    </div>
+		    <div class="pagination">{$page}</div>
+		  </div>
+		</div>
+	</div>
+</section>
+
+<include file="Public/mocal" />
+
+<div class="modal fade" tabindex="-1" role="dialog" id="gridSystemModals">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">信息框</h4>
+      </div>
+      <div class="modal-body">
+        确认要删除所有留言吗？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary deletal">删除</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		function delemes(id){
+			$('#gridSystemModal').modal("show");
+			$('.detet').click(function(){
+				$.post('__CONTROLLER__/deleteMsg',{id:id},function(data,tip){
+					if(tip=="success"){
+						window.history.go(0);
+					}
+				})
+			})
+		}
+		$(function(){
+			$('.deleteAll').click(function(){
+				$('#gridSystemModals').modal("show");
+				$('.deletal').click(function(){
+					$.post('__CONTROLLER__/deleteAllMsg',function(data,tip){
+						if(tip=="success"){
+							window.history.go(0);
+						}
+					})
+				})
+			})
+		})
+	</script>
+</body>
+</html>

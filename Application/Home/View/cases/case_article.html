@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<include file="Public/metas" />
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/export_art.css">
+</head>
+<body>
+<include file="Public/head" />
+
+	<!-- 案例banner图内容开始 -->
+	<div id="banner50">
+		<div class="banner50_img"></div>
+	</div>
+	<!-- 案例banner图内容结束 -->
+
+	<!-- 案例文章页主体内容 -->
+	<div id="exar">
+		<div class="exar_con">
+
+			<!-- 左边盒子 -->
+			<div class="exar_con_left">
+
+
+				<div class="exar_left_top">
+
+					<div class="exar_left_top1"><span>{$cons[0]['shotitle']}</span></div>
+
+
+					<div class="exar_left_top2">时间：{$cons[0]['times']|date="Y-m-d",###} | 点击：{$cons[0]['browse']}次</div>
+
+
+
+					<div class="exar_left_top3">
+						<?php echo htmlspecialchars_decode($cons[0]['con']);?>
+					</div>
+
+
+				</div>
+
+				<include file="Public/casee" />
+
+
+
+
+
+
+			</div>
+
+
+			<!-- 右边盒子 -->
+			<div class="exar_con_right">
+				
+				<div class="exar_right_top">
+					<div class="exar_right_top1">{$exportlist[0]['catename']}</div>
+					<div class="exar_right_top2"><a href="{$exportlist[0]['url']}/{$exportlist[0]['cateid']}">MORE</a></div>
+				</div>
+
+
+				<div class="exar_right_middle">
+					<ul>
+						<volist name="exportlist" id="vo">
+						<li><a href="/casepnews/{$vo.cateid}/{$vo.id}">{$vo.times|date="Y-m",###} · {$vo.shotitle|msubstr=0,11,'utf8'}</a></li>
+						</volist>
+					</ul>
+				</div>
+
+
+				<div class="exar_right_bottom">
+					<div class="exar_right_bottom1">扫码下方二维码，关注我们！</div>
+
+					<div class="exar_right_bottom2"><img src="__PUBLIC__/images/footer1.jpg"></div>
+
+					<div class="exar_right_bottom3">
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"image":{"viewList":["qzone","tsina","tqq","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+					</div>
+				</div>
+
+
+
+			</div>
+
+
+		</div>
+	</div>
+
+	<!-- 案例文章页主体内容 -->
+
+<div class="clearfix"></div>
+	<include file="Public/foot" />
+
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/homejquery.js"></script>
+</body>
+</html>

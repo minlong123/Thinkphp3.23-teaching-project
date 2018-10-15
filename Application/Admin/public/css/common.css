@@ -1,0 +1,39 @@
+		.pagination a{
+			position: relative;
+		    float: left;
+		    padding: 6px 12px;
+		    margin-left: -1px;
+		    line-height: 1.42857143;
+		    color: #337ab7;
+		    text-decoration: none;
+		    background-color: #fff;
+		    border: 1px solid #ddd;
+		}
+		.pagination .current{
+			position: relative;
+		    float: left;
+		    padding: 6px 12px;
+		    margin-left: -1px;
+		    line-height: 1.42857143;
+			color: #fff;
+		    cursor: default;
+		    text-decoration: none;
+		    background-color: #337ab7;
+		    border: 1px solid #ddd;
+		    border-color: #337ab7;
+		}
+		.logins{margin:0;padding:0;}
+		.logins .container{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);}
+		.logins .container>h1{margin-bottom:100px;}
+		.nav-lists>a{
+			margin:5px 0;
+		}
+		.mana-edit .breadcrumb{padding:0 15px;margin:0;}
+				.nav-mess .panel-title{position:relative}
+		.nav-mess .list-group-item{position:relative;right:15px;}
+		.edit-nav{position:absolute;right:60px;}
+		.delte-nav{position:absolute;right:0;}
+		.nav-mess .panel{overflow:hidden;}
+		.art-conss td{font-size:15px;}
+		.dete-btn a{margin-top:5px;}
+		.logins .verss{height:100%;text-align:center;}

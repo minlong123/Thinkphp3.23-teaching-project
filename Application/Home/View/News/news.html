@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<include file="Public/metas" />
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/news.css">
+</head>
+<body>
+<include file="Public/head" />
+
+	<!-- 行业动态banner图内容开始 -->
+
+	<div id="banner13">
+		<div class="banner13_img"></div>
+	</div>
+
+	<!-- 行业动态banner图内容结束 -->
+
+	<!-- 第一部分 -->
+	<div id="case4">
+		<div class="case4_by_top">
+			<img src="__PUBLIC__/images/case_line.jpg"/>
+			 新闻<span>动态</span>
+			<img src="__PUBLIC__/images/case_line.jpg"/>
+		</div>
+
+		<div class="case4_by_middle">NEWS INFORMATION</div>
+	</div>
+	<!-- 第一部分 -->
+
+
+	<!-- 第二部分 -->
+	<div id="new1_one">
+		<div class="new1_one1">
+			<div class="new1_one_con">
+
+
+				<div class="new1_one_con1">
+					<a href="/newss/31"  class="new1_one_con2">
+						<span>公司动态</span>
+						<span><img src="__PUBLIC__/images/case_img.png"></span>
+					</a>
+				</div>
+
+
+
+				<div class="new1_one_con1">
+					<a href="/news/29" class="new1_one_con2">
+						<span>行业动态</span>
+						<span class="new1_select"><img src="__PUBLIC__/images/case_img.png"></span>
+					</a>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<!-- 第二部分 -->
+
+	<!-- 第三部分 -->
+	<div id="new1_two">
+		<div class="new1_two_top">
+
+			<volist name="artlist" id="vo">
+			<div class="new1_top_con">
+				<div class="new1_two_left"><a href="/compnews/{$vo.cateid}/{$vo.id}"><img src="/{$vo.pic}" width="290" height="120"></a></div>
+
+				<div class="new1_two_right">
+					<div class="new1_two_right1">
+						<a href="/compnews/{$vo.cateid}/{$vo.id}">{$vo.shotitle}</a>
+					</div>
+					<div class="new1_two_right2">{$vo.descs}</div>
+					<div class="new1_two_right3">{$vo.times|date="Y-m-d",###}</div>
+				</div>
+			</div>
+		    </volist>
+
+
+		</div>
+				<!-- 分页 -->
+		<div class="pagination">{$page}</div>		
+
+	</div>
+<include file="Public/foot" />
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/homejquery.js"></script>
+
+</body>
+</html>

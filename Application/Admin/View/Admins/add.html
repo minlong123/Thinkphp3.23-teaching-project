@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>网站后台</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css">
+<!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<include file="Public/header" />
+<section class="container-fluid mana-edit">
+	<div class="row">
+		<include file="Public/left" />
+
+		<div class="col-lg-9">
+
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+				<ol class="breadcrumb">
+				  <li><a href="__CONTROLLER__/index">管理员管理</a></li>
+				  <li class="active">管理员添加</li>
+				</ol>
+			  </div>
+			  <div class="panel-body">
+			   	   
+				<form class="form-inline" id="fmm">
+				  <div class="form-group">
+				    <label for="exampleInputName2">用户名：</label>
+				    <input type="text" class="form-control form-user" placeholder="填写新的用户名" name="user">
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputEmail2">密码：</label>
+				    <input type="password" class="form-control form-pwd" placeholder="未填默认不修改" name="pwd">
+				  </div>
+			          <volist name="aitylist" id="vo">
+
+			          <div class="form-group" style="display:block;margin:8px 0;">
+					      <div class="checkbox">
+					        <label>
+					          <input type="checkbox" class="form-jur" value="{$vo.auto}" name="jur[]">&nbsp;&nbsp;{$vo.names}
+					        </label>
+					      </div>
+			          </div>
+			      	  </volist>
+				</form>
+				<button type="submit" class="btn btn-default edit-dmin">提交</button>
+			  </div>
+			</div>
+		</div>
+	</div>
+</section>
+
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.edit-dmin').click(function(){
+				var bool=false;
+				$('.form-jur').each(function(){
+					if($(this).is(":checked")){
+						bool=true;
+					}
+				})
+				if($('.form-user').val() && bool==true){
+					$.ajax({
+						url:"__CONTROLLER__/add",
+						data:$('#fmm').serialize(),
+						type:"POST",
+						success:function(data){
+							console.log(data);
+							if(data.status==1){
+								alert(data.info);
+								window.location.href="__CONTROLLER__/index";
+							}
+							if(data.status==0){
+								alert(data.info);
+								$('.form-user').val("");
+								$('.form-pwd').val("");
+								$('.form-jur').prop("checked",false);
+							}
+						},
+					})
+				}else{
+					alert("请输入用户名以及至少一个权限");
+				}
+
+			})
+		})
+	</script>
+</body>
+</html>

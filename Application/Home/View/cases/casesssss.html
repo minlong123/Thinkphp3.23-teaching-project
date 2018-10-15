@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<include file="Public/metas" />
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge" >
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/case.css">
+</head>
+<body>
+<include file="Public/head" />
+
+	<!-- 营销策划案例banner图内容开始 -->
+
+	<div id="banner12">
+		<div class="banner12_img"></div>
+	</div>
+
+	<!-- 营销策划案例banner图内容结束 -->
+
+	<!-- 主体内容第一部分 -->
+	<div id="case4">
+		<div class="case4_by_top">
+			<img src="__PUBLIC__/images/case_line.jpg"/>
+			 客户<span>案例</span>
+			<img src="__PUBLIC__/images/case_line.jpg"/>
+		</div>
+
+		<div class="case4_by_middle">CUSTOMER CASE</div>
+	</div>
+
+	<div id="case4_one">
+		<div class="case4_one1">
+			<div class="case4_one_con">
+
+				<div class="case4_one_con1">
+					<a href="/casess/18"  class="case4_one_con2">
+						<span>网站建设案例</span>
+						<span><img src="__PUBLIC__/images/case_img.png"></span>
+					</a>
+				</div>
+
+
+				<div class="case4_one_con1">
+					<a href="/casesss/25" class="case4_one_con2">
+						<span>小程序开发案例</span>
+						<span><img src="__PUBLIC__/images/case_img.png"></span>
+					</a>
+				</div>
+
+
+				<div class="case4_one_con1">
+					<a href="/casessss/26" class="case4_one_con2">
+						<span>电商运营案例</span>
+						<span><img src="__PUBLIC__/images/case_img.png"></span>
+					</a>
+				</div>
+
+
+				<div class="case4_one_con1">
+					<a href="/casesssss/17" class="case4_one_con2">
+						<span>营销策划案例</span>
+						<span class="case4_select"><img src="__PUBLIC__/images/case_img.png"></span>
+					</a>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<!-- 主体内容第一部分 -->
+
+
+	<!-- 主体内容第二部分  -->
+	<div id="case4_two">
+		<!-- 案例 -->
+		<div class="case4_two_case">
+
+			<volist name="artlist" id="vo">
+			<div class="case4_two_case1">
+				<div class="case4_two_case2"><a href="/casepnews/{$vo.cateid}/{$vo.id}"><img src="/{$vo.pic}" width="300" height="190"/></a></div>
+				<div class="case4_two_case3">{$vo.shotitle}</div>
+			</div>
+			</volist>
+
+		</div>
+
+		<div class="clearfix"></div>
+		<!-- 分页 -->
+		<div class="pagination">{$page}</div>
+
+
+	</div>
+
+	<!-- 主体内容第二部分  -->
+
+	<div class="clearfix"></div>
+	<include file="Public/foot" />
+
+
+
+
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/homejquery.js"></script>
+
+
+</body>
+</html>

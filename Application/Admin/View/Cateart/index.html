@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>专家顾问管理</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css">
+<!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<include file="Public/header" />
+<section class="container-fluid art-conss">
+	<div class="row">
+		<include file="Public/left" />
+
+		<div class="col-lg-9">
+
+		 <div class="bs-example" data-example-id="table-within-panel">
+		    <div class="panel panel-default">
+		      <!-- Default panel contents -->
+		      <div class="panel-heading">所有文章管理界面</div>
+		      <div class="panel-body nav-lists">
+		        <p>默认显示最近所有文章</p>
+
+		        <volist name="catename" id="vo">
+		        <a href="__CONTROLLER__/index/id/{$vo.id}" class="btn btn-primary">{$vo.catename}文章管理</a>&nbsp;&nbsp;
+		    	</volist>
+
+		        <a href="__CONTROLLER__/index" class="btn btn-success">最近所有文章</a>
+
+		        <if condition="session('jur') eq '0' or strstr(session('jur'),'Cateart-add')">
+		        <a href="__CONTROLLER__/add" class="btn btn-warning">添加文章</a>
+		        </if>
+
+		      </div>
+
+		      <!-- Table -->
+		      <div class="table-responsive">
+			      <table class="table table-bordered">
+			        <thead>
+			          <tr>
+			            <th>#</th>
+			            <th>分类</th>
+			            <th>缩略图</th>
+			            <th>长标题</th>
+			            <th>短标题</th>
+			            <th>文章描述</th>
+			            <th>发表时间</th>
+			            <th>浏览人数</th>
+			            <th>查看更多</th>
+			            <th>操作</th>
+			          </tr>
+			        </thead>
+			        <tbody>
+			          <volist name="artlist" id="vo">
+			          <tr>
+			            <td scope="row">{$vo.id}</td>
+			            <td>{$vo.catename}</td>
+			            <td><img src="__ROOT__/{$vo.larpic}" /></td>
+			            <td>{$vo.lartitle}</td>
+			            <td>{$vo.shotitle}</td>
+			            <td>{$vo.descs}</td>
+			            <td>{$vo.times|date="Y-m-d H:i:s",###}</td>
+			            <td>{$vo.browse}</td>
+			            <td><a href="#" class="btn btn-info">查看更多</a></td>
+
+			            <td class="dete-btn">
+
+			            	<if condition="session('jur') eq '0' or strstr(session('jur'),'Cateart-edit')">
+			            	<a href="__CONTROLLER__/edit/id/{$vo.id}" class="btn btn-warning">修改</a>
+			            	 </if>
+
+			            	&nbsp;
+
+			            	<if condition="session('jur') eq '0' or strstr(session('jur'),'Cateart-dele')">
+			            	<a href="#" type="button" class="btn btn-danger" data-toggle="modal" onclick="art.deteArt({$vo.id})">删除</a>
+			            	 </if>
+			            	 
+
+			            </td>
+			          </tr>
+			      	  </volist>
+			        </tbody>
+			      </table>
+		  	  </div>
+		    </div>
+		    <div class="pagination">{$page}</div>
+		  </div>
+
+		</div>
+	</div>
+</section>
+<include file="Public/mocal" />
+  
+
+
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/bootstrap.js"></script>
+<script type="text/javascript">
+    var art={};
+
+    // 删除文章
+    art.deteArt=function(id){
+    	$('#gridSystemModal').modal("show");
+    	$('.detet').click(function(){
+    		$.post("__CONTROLLER__/dele",{id:id},function(data,tip){
+    			if(tip=="success"){
+    				window.history.go(0);
+    			}
+    		})
+    	})
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>网站后台</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css">
+
+<!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<include file="Public/header" />
+<section class="container-fluid">
+	<div class="row">
+		<include file="Public/left" />
+
+		<div class="col-lg-9">
+
+		 <div class="bs-example" data-example-id="table-within-panel">
+		    <div class="panel panel-default">
+		      <!-- Default panel contents -->
+		      <div class="panel-heading">管理员管理</div>
+		      <div class="panel-body">
+		        <p>管理员增删板块</p>
+		        <a href="__CONTROLLER__/add" class="btn btn-primary">添加管理员</a>
+		      </div>
+
+		      <!-- Table -->
+		      <div class="table-responsive">
+			      <table class="table table-bordered">
+			        <thead>
+			          <tr>
+			            <th>#</th>
+			            <th>用户名</th>
+			            <th>上一次登录时间</th>
+			            <th>上一次登录地址</th>
+			            <th>权限</th>
+			            <th>操作</th>
+			          </tr>
+			        </thead>
+			        <tbody>
+
+			         <volist name="adminlist" id="vo">
+			          <tr>
+			            <th scope="row">{$vo.id}</th>
+			            <td>{$vo.user}</td>
+			            <td>{$vo.lasttime|date="Y-m-d H:i:s",###}</td>
+			            <td>{$vo.lastaddress}</td>
+			            <td>{$vo.jur}</td>
+			            <td>
+			            	<if condition="$vo['id'] eq 1">
+			            		<a href="javascript:void(0);">超级管理员</a>
+			            	<else />
+				            	<a href="__CONTROLLER__/edit/id/{$vo.id}" class="btn btn-warning">修改</a>&nbsp;
+				            	<a href="javascript:void(0)" type="button" class="btn btn-danger" data-toggle="modal" onclick="deleadmin({$vo.id});">删除</a>
+			            	</if>
+			            </td>
+			          </tr>
+			      	 </volist>
+
+			        </tbody>
+			      </table>
+		  	  </div>
+		    </div>
+		    <div class="pagination">{$page}</div>
+		  </div>
+
+		</div>
+	</div>
+</section>
+
+
+
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">增加新管理员</h4>
+      </div>
+      <div class="modal-body">
+        <form id="fmm">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">用户名:</label>
+            <input type="text" name="user" placeholder="输入用户名……" class="form-control form-user" id="recipient-name">
+          </div>
+
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">密码:</label>
+            <input type="password" placeholder="不输入密码默认为123456" class="form-control form-pwd" id="recipient-name" name="pwd">
+          </div>
+
+          <if condition="SESSION['jur'] eq 0">
+          	权限管理：
+          <volist name="aitylist" id="vo">
+          <div class="form-group">
+		      <div class="checkbox">
+		        <label>
+		          <input type="checkbox" class="form-jur" name="jur[]" title="{$vo.id}" value="{$vo.id}">{$vo.names}
+		        </label>
+		      </div>
+          </div>
+      	  </volist>
+      	</if>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="submit" class="btn btn-primary add-admins">提交</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<include file="Public/mocal" />
+
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		// 删除该管理员
+		function deleadmin(id){
+			var id=id;
+			$('#gridSystemModal').modal("show");
+			$('.detet').click(function(){
+				$.post('__CONTROLLER__/deteAdmin',{id:id},function(data,tip){
+					if(tip=="success"){
+						window.history.go(0);
+					}
+				})
+			})
+		}
+
+	</script>
+</body>
+</html>

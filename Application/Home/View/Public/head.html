@@ -1,0 +1,27 @@
+	<!-- 导航内容开始 -->
+	<div id="header">
+		<div class="navigator">
+			<div class="navigator_logo"><img src="__PUBLIC__/images/cehuaren.jpg" height="80"></div>
+			<div class="navigator_nav">
+				<ul class="navigator_nav_ul">
+					<volist name="navlist" id="vo">
+					<li class="navulli">
+						<a class="onenav" <if condition="isset($vo['items'])">href="javascript:void(0)" <else /><if condition="$vo.id eq 1">href="{$vo.url}"<else />href="{$vo.url}/{$vo.id}"</if></if>>{$vo.catename}</a>
+
+						<!-- 判断如果有子导航的话，下面的元素才显示 -->
+						<if condition="isset($vo['items'])">
+						<ol class="hover_li">
+							<volist name="vo['items']" id="voo">
+							<li><a href="{$voo.url}/{$voo.id}" data-url="{$voo.url}">{$voo.catename}</a></li>
+						    </volist>
+						</ol>
+					    </if>
+
+					</li>
+					</volist>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 导航栏内容结束 -->

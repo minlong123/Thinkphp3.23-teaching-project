@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<include file="Public/metas" />
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge" >
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/export.css">
+</head>
+<body>
+<include file="Public/head" />
+
+	<!-- 专家顾问banner图内容开始 -->
+	<div id="banner11">
+		<div class="banner11_img"></div>
+	</div>
+	<!-- 专家顾问banner图内容结束 -->
+
+	<!-- 专家顾问主体内容开始 -->
+	<div id="export_by">
+		<div class="export_by_con">
+
+			<div class="export_by_top">
+				<img src="__PUBLIC__/images/case_line.jpg"/>
+				专家<span>顾问</span>
+				<img src="__PUBLIC__/images/case_line.jpg"/>
+			</div>
+
+			<div class="export_by_middle">EXPERT ADVISOR</div>
+
+			<div class="export_by_bottom">
+
+
+				<volist name="exportlist" id="vo">
+				<div class="export_by_bottom1">
+
+					<div class="export_by_bottom2"><a href="/exportnews/{$vo.cateid}/{$vo.id}"><img src="/{$vo.pic}" width="162" height="216"></a></div>
+
+
+					<div class="export_by_bottom3">
+						<div class="export_by_bottom4">{$vo.shotitle}</div>
+						<div class="export_by_bottom5">{$vo.lartitle}</div>
+					</div>
+				</div>
+				</volist>
+			</div>
+		</div>
+	</div>
+	<!-- 专家顾问主体内容结束-->
+	<div class="clearfix"></div>
+
+	<include file="Public/foot" />
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/homejquery.js"></script>
+</body>
+</html>

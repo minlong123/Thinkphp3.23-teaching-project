@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>账户密码修改</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css">
+<!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<include file="Public/header" />
+<section class="container-fluid mana-edit">
+	<div class="row">
+		<include file="Public/left" />
+
+		<div class="col-lg-9">
+
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+				<ol class="breadcrumb">
+				  <li class="active">管理员信息修改</li>
+				</ol>
+			  </div>
+			  <div class="panel-body">
+			   	   
+				<form class="form-inline" method="post" action="__CONTROLLER__/editperson">
+				  <div class="form-group">
+				    <label for="exampleInputName2">用户名：</label>
+				    <input type="text" class="form-control form-user" placeholder="填写您的用户名" name="user" value="{$editres['user']}">
+				  </div>
+
+
+				  <div class="form-group">
+				    <label for="exampleInputEmail2">密码：</label>
+				    <input type="password" class="form-control form-pwd" placeholder="未填默认不修改" name="pwd">
+				    <input type="hidden" name="id" class="form-id" value="{$editres['id']}">
+				  </div>
+
+
+				  <button type="submit" class="btn btn-default edit-dmin">提交</button>
+				  
+				</form>
+
+
+			  </div>
+			</div>
+		</div>
+	</div>
+</section>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/bootstrap.js"></script>
+</body>
+</html>
